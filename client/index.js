@@ -28,47 +28,11 @@ if (accessToken && refreshToken) {
 // 페이지 새로 고침// 다른 페이지로 리디렉션
 }
 
-const accessToken = localStorage.getItem('accessToken');
-const serverUrl = "http://121.158.132.54:18646/userInfo/Id_NickName_Balance";
-//URL이 "http://" 또는 "https://"로 시작하지 않으면 "http://"를 추가
-if (!serverUrl.startsWith("http://")) {
-    serverUrl = "http://" + serverUrl;
-}
-
-fetch(serverUrl, {
-    method: 'GET',
-    headers: {
-            'Authorization': "Bearer "+localStorage.getItem('accessToken')
-    }
-})
-.then(response => response.json())
-.then(data => {
-    
-    document.getElementById("homeNickname").textContent = data.nickname;
-    document.getElementById("homeNickname2").textContent = data.nickname;
-    document.getElementById("homeAccount").textContent = data.account;
-    document.getElementById("homeBalance").textContent = data.balance;
-    localStorage.setItem('accountNumber', data.account);
-
-})
-.catch(error => {
-    console.error('회원정보 요청 중 오류 발생:', error);
-});
-
-function refreshPage() {
-    window.location.href = "http://127.0.0.1:5500/mainSuccess.html"
-}
-
-
 
 //------------------------랭킹-------------------------
 
-const token1 = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBY2Nlc3NUb2"
-    fetch("hhttp://121.158.132.54:18646/userInfo/rank", {
-    method: 'GET',
-    headers: {
-        'Authorization': token1
-    }
+    fetch("http://121.158.132.54:18646/userInfo/rank", {
+    method: 'GET'
 })
 
 

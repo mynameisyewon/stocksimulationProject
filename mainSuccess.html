@@ -28,7 +28,8 @@
   <!-- css -->
   <link rel="stylesheet" href="./css/main1.css"/>
   <!-- javascript -->
-  <script src="https://capstone-0chateam.github.io/stocksimulation/client/index.js" ></script>
+  <script src="https://capstone-0chateam.github.io/stocksimulation/client/index.js"></script>
+  <script src="https://capstone-0chateam.github.io/stocksimulation/client/successIndex.js"></script>
 
   
 </head>
@@ -42,7 +43,7 @@
   <section id="home" class="section">
     <div class="home__logo">
       <div class="home__logo__img">
-        <img style="width: 500px;" src="images/logo.png" />
+        <img style=" width: 500px" src="images/logo.png" />
       </div>      
       <div class="home__logo__txt">
         <p class="home__logo__txt_1">성공한 투자자가 되기 위한 첫 걸음</p>
@@ -66,25 +67,106 @@
         </script>
       
     </div>
+
+
+
     <div class="home__middle">
-    <div class="myinfo">
+
+          <div class="myinfo">
+                
+                <div class="touch">
+                    <span>반갑습니다.</span>
+                    <span id="homeNickname"></span>
+                    <span>님</span>
+                    <div class="touch_side">나의 정보를 확인해보세요</div> 
+                </div>
+                <div class="box">
+<div class="box_L"> 
+    <div class="box_L_header"> MY INFOMATION</div>
+    <div class="box_L_under">
+
+      <div class="box_L_under_1">
+            <div class="boxIn_imgbox">
+              <img class="boxIn_img"
+              style="width: 140px" src="./images/infoImg.png">
+           </div>
+           <div class="box_txt">
+            <div class="box_txt_name">NAME</div>
+            <div class="box_txt_nickname"> <p id="homeNickname2"></p> </div>
+            <div class="box_txt_code"> <span id="homeRanking"></span><span>위</span> </div>
+          </div>
+      </div>
+      <div>
+        <div class="box_txt_balance">
+          <table>
+            <tr>
+              <td> 보유자산  </td>
+              <td width="20px;">|</td>
+              <td><span id="homeBalance"></span><span> 원</span></td>
+            </tr>
+          </table>
+        </div>
+        <div class="box_txt_account">
+          <table>
+            <tr>
+              <td> 계좌번호  </td>
+              <td width="20px;">|</td>
+              <td><span id="homeAccount"></span><span>D</span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
     </div>
-    <div class="home__down">
-      <a href="#rank"> <img style="width: 70px;" src="images/scroll.png"></a>
+</div>
+<div class="box_R">
+  <div class="box_R_header"> USER_CODE</div>
+    <div class="box_R_under"> 
+      <img class="box_barcode" style="width:140px" src="./images/barcod.png">
     </div>
+</div>
+                </div>
+        
+          </div>
+
+
+          <div class="home__down">
+            <a href="#rank"> <img style="width: 70px;" src="images/scroll.png"></a>
+          </div>
+
     </div>
+
     <div class="home__nav">
-      <div></div>
       <ul class="home__nav_top">
         <a class="home__nav_top-1" href="https://www.bok.or.kr/ebook/ecatalog5.jsp?Dir=359" target="_blank">주식 용어 <br/> </a> 
         <a class="home__nav_top-2" href="https://capstone-0chateam.github.io/stocksimulation/howtoplay.html"> 게임 방법 <br/> </a>
       </ul>
       <ul class="home__nav_bottom">
-        <a class="home__nav_bottom-1" onclick="handleStart()">게임시작 <br/> </a>
-            <script>function handleStart(){
-              alert("로그인이 필요합니다.");}</script>
-
-        <a class="home__nav_bottom-2" id="loginButton" href="https://capstone-0chateam.github.io/stocksimulation/login.html">로그인 <br/> </a>
+        <a onclick="SendMessageToUnity()" class="home__nav_bottom-1">게임시작 <br/> </a>
+        <script src="./cap10/Build/cap10.loader.js"></script>
+        <script>
+          function SendMessageToUnity(){
+            var accountNumber = localStorage.getItem('accountNumber');
+            var url = "http://localhost:55249?accountNumber=" + accountNumber;
+            window.location.href = url;}
+        </script>
+        <a class="home__nav_bottom-2" id="logoutButton">로그아웃<br/> </a>
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+              const logoutButton = document.getElementById('logoutButton');
+          
+              logoutButton.addEventListener('click', function() {
+                  // localStorage에서 토큰 제거
+                  localStorage.removeItem('accessToken');
+                  localStorage.removeItem('refreshToken');
+                  localStorage.removeItem('accountNumber')
+          
+                  // 로그아웃 후 메인 페이지로 리다이렉트
+                  window.location.href = "https://capstone-0chateam.github.io/stocksimulation/main.html";
+              });
+          });
+          </script>
+          
       </ul>
       <div id="intro"></div>
     </div>
@@ -152,7 +234,7 @@
                 <col width="200px">
               </colgroup>
               <tbody>
-
+             
               </tbody>
             </table>
           </div>
@@ -173,8 +255,8 @@
     <div>(주) 영차</div>
     <div><a href="https://url.kr/6u54g1">(24252) 강원특별자치도 춘천시 한림대학길 1</a></div>
     <div><span >팩스 : 1234-5678</span>
-      <span class="footer__info__tel"><a href="tel:+82.033-248-2301">전화 : 033-248-2301</a></span></div>
-    <a href="mailto:0cha.stockSimulation@gmail.com">E-mail: 0cha.stockSimulation@gmail.com</a>
+      <span class="footer__info__tel"><a href="tel:+82.1234.5678">전화 : 1234-5678</a></span></div>
+    <a href="mailto:1234@gmail.com">E-mail: 1234@gmail.com</a>
   </div>
 </footer>
 </body>
